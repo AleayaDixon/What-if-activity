@@ -1,0 +1,56 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+import java.util.Scanner;
+import java.text.NumberFormat;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Ideone
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	int cusNum;
+	String cusFname, cusLname, taxCode;
+	Double saleAmt;
+	Double tot = 0.0;
+		
+		Scanner keyboard = new Scanner(System.in);
+		NumberFormat currency = NumberFormat.getCurrencyInstance();
+		
+		System.out.println( "Insert the customer number" );
+		cusNum = keyboard.nextInt();
+		
+		
+		System.out.println( "Insert customer first name" );
+		cusFname = keyboard.next();
+		
+		System.out.println( "Insert customer last name" );
+		cusLname = keyboard.next();
+		
+		System.out.println( "Insert the sales amount" );
+		saleAmt = keyboard.nextDouble();
+		
+		System.out.println( "Insert a tax code" );
+		taxCode = keyboard.next();
+		
+		if (taxCode.equals("NRM"))
+		{
+			tot = (saleAmt * 0.006) + saleAmt;
+		}
+		else if (taxCode.equals("NPF"))
+		{
+			tot = saleAmt;
+		}
+		else if (taxCode.equals("BIZ"))
+		{
+			tot = (saleAmt * 0.0045) + saleAmt;
+		}
+		System.out.println("Customer ID: " + cusNum);
+		System.out.println("Customer Name: " + cusFname + " " + cusLname);
+		System.out.println("Sales Amount: " + currency.format(saleAmt));
+		System.out.println("Tax Code: " + taxCode);
+		System.out.println("Total Amount Due: " + currency.format(tot));
+
+		keyboard.close();
+	}
+}
